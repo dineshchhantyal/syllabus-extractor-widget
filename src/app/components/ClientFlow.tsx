@@ -322,23 +322,25 @@ export default function ClientFlow() {
                                 </li>
                             </ol>
                         </div>
-                        <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-sm">
-                            <div className="flex items-center justify-between px-3 py-2 border-b border-neutral-200 dark:border-neutral-800 text-xs font-semibold uppercase tracking-wide text-neutral-500">
-                                <span>Debug JSON</span>
-                                <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    onClick={() => setShowJson((s) => !s)}
-                                >
-                                    {showJson ? "Hide" : "Show"}
-                                </Button>
+                        {false && (
+                            <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-sm">
+                                <div className="flex items-center justify-between px-3 py-2 border-b border-neutral-200 dark:border-neutral-800 text-xs font-semibold uppercase tracking-wide text-neutral-500">
+                                    <span>Debug JSON</span>
+                                    <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => setShowJson((s) => !s)}
+                                    >
+                                        {showJson ? "Hide" : "Show"}
+                                    </Button>
+                                </div>
+                                {showJson && (
+                                    <pre className="p-3 text-[10px] max-h-56 overflow-auto whitespace-pre-wrap leading-relaxed text-neutral-600 dark:text-neutral-300">
+                                        {JSON.stringify(activeEvents, null, 2)}
+                                    </pre>
+                                )}
                             </div>
-                            {showJson && (
-                                <pre className="p-3 text-[10px] max-h-56 overflow-auto whitespace-pre-wrap leading-relaxed text-neutral-600 dark:text-neutral-300">
-                                    {JSON.stringify(activeEvents, null, 2)}
-                                </pre>
-                            )}
-                        </div>
+                        )}
                     </div>
                     <div className="lg:col-span-2 space-y-6">
                         <div className="flex flex-col gap-4">
