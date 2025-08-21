@@ -1,26 +1,182 @@
 @import "tailwindcss";
 
+/* Design Tokens */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    /* Base (light) theme surfaces */
+    --background: #ffffff;
+    --background-alt: #fafafa;
+    --background-muted: #f4f4f5;
+    --foreground: #18181b;
+    --foreground-muted: #3a3a42; /* slightly deeper for better contrast on light surfaces */
+
+    /* Brand Yellow Palette (HSL + RGB fallback) */
+    /* Primary base: #ffb300 (Amber 600-ish) chosen for AA contrast versatility */
+    --primary-h: 45; /* approx hue */
+    --primary-s: 100%;
+    --primary-l: 50%;
+    --primary-rgb: 255 179 0; /* #ffb300 */
+    --primary-rgb-accent: 255 193 7; /* slightly lighter accent */
+    --primary-rgb-strong: 230 140 0; /* deeper for hover/dark */
+    --primary: var(--primary-rgb);
+
+    /* On-Primary text (decide based on contrast) */
+    --on-primary: #221a00;
+    --on-primary-contrast: #000; /* sometimes we need explicit black */
+
+    /* Semantic states derived from primary */
+    --ring-primary: 255 179 0;
+    --focus-ring: 255 179 0;
+
+    /* Radii */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0 0 0 / 0.05);
+    --shadow-md: 0 2px 4px -2px rgba(0 0 0 / 0.06),
+        0 4px 6px -1px rgba(0 0 0 / 0.08);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
+html.dark {
     --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    --background-alt: #111111;
+    --background-muted: #181818;
+    --foreground: #fafafa;
+    --foreground-muted: #a1a1aa;
+    --on-primary: #1a1400;
+    --ring-primary: 255 193 7;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+html.dark body {
+    background: var(--background);
+}
+
+/* Brand components */
+.btn-primary {
+    --_bg1: rgb(var(--primary-rgb));
+    --_bg2: rgb(var(--primary-rgb-accent));
+    --_bg3: rgb(var(--primary-rgb-strong));
+    background: linear-gradient(
+        90deg,
+        var(--_bg1),
+        var(--_bg2) 55%,
+        var(--_bg1)
+    );
+    color: var(--on-primary);
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+}
+.btn-primary:hover {
+    background: linear-gradient(
+        90deg,
+        var(--_bg1),
+        var(--_bg2) 60%,
+        var(--_bg3)
+    );
+}
+.btn-primary:active {
+    filter: brightness(0.95);
+}
+.btn-primary:focus-visible {
+    outline: 2px solid rgb(var(--ring-primary));
+    outline-offset: 2px;
+}
+
+.surface-card {
+    background: var(--background-alt);
+    border: 1px solid var(--background-muted);
+}
+html.dark .surface-card {
+    border-color: #1f1f1f;
+}
+
+.surface-muted {
+    background: var(--background-muted);
+}
+
+/* Utility helpers (non Tailwind) */
+/* Utility (prefer tokens, fall back to direct) */
+.text-primary {
+    color: rgb(var(--primary));
+}
+.bg-primary {
+    background-color: rgb(var(--primary));
+}
+.bg-primary-soft {
+    background-color: rgba(var(--primary-rgb) / 0.12);
+}
+.bg-primary-softer {
+    background-color: rgba(var(--primary-rgb) / 0.06);
+}
+.hover\:bg-primary-soft:hover {
+    background-color: rgba(var(--primary-rgb) / 0.18);
+}
+.border-primary {
+    border-color: rgb(var(--primary));
+}
+.ring-primary {
+    --tw-ring-color: rgb(var(--ring-primary));
+}
+.gradient-accent {
+    background: linear-gradient(
+        90deg,
+        rgb(var(--primary-rgb-accent)),
+        rgb(var(--primary-rgb)),
+        rgb(var(--primary-rgb-accent))
+    );
+}
+
+/* Text utilities */
+.text-fg {
+    color: var(--foreground);
+}
+.text-fg-muted {
+    color: var(--foreground-muted);
+}
+
+/* Form focus states unify */
+input,
+textarea,
+select {
+    background: var(--background-alt);
+    color: var(--foreground);
+}
+input::placeholder,
+textarea::placeholder {
+    color: var(--foreground-muted);
+}
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid rgba(var(--primary-rgb) / 0.55);
+    outline-offset: 2px;
+}
+html.dark input,
+html.dark textarea,
+html.dark select {
+    background: var(--background-muted);
+}
+
+/* Scrollbar theming (WebKit) */
+*::-webkit-scrollbar {
+    width: 10px;
+}
+*::-webkit-scrollbar-track {
+    background: var(--background-alt);
+}
+*::-webkit-scrollbar-thumb {
+    background: rgba(var(--primary-rgb) / 0.55);
+    border-radius: 20px;
+    border: 2px solid var(--background-alt);
+}
+*::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--primary-rgb) / 0.75);
 }

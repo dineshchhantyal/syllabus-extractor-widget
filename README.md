@@ -1,77 +1,67 @@
-# Syllabus Scraper 🗓️
+# AI Syllabus to Calendar Converter
 
-A smart widget that automatically extracts deadlines and events from university syllabi and converts them into a universal calendar file (.ics), saving students time and preventing missed deadlines.
+Convert syllabus PDFs, screenshots, or copied text into calendar events (ICS + JSON) in seconds. Upload or paste → AI extracts dates → you review & adjust → export. One-time import helper, not a new calendar.
 
-## Problem
+## Story Behind The Project
 
-Students receive syllabi in various formats—typically PDFs or images—at the beginning of every semester. These documents contain critical dates for assignments, exams, and projects. Manually transferring these dates into a personal calendar like Google Calendar or Apple Calendar is tedious, time-consuming, and error-prone. A single mistake can lead to a missed deadline.
+I built this after yet another semester kickoff where every professor dropped a differently formatted PDF and I spent an evening copy‑pasting dates into my calendar. OCR tools missed context, manual entry was error‑prone, and generic AI chat prompts produced messy, unstructured text. I wanted a focused, repeatable bridge: drop files in, get trustworthy structured events, review fast, and move on. The goals were: zero lock‑in, privacy (client state only), and intelligent assistance (fill obvious gaps, flag what it inferred). This repo is that workflow distilled.
 
-## Solution
+## What It Does
 
-Syllabus Scraper bridges the gap between static documents and a student's dynamic digital life. It provides a simple drag-and-drop interface for uploading syllabus files. Using an AI-powered backend, it intelligently parses the document, extracts key events, and presents them in a clean, interactive list for review. Once confirmed, the user can export all events in a single click to an .ics file, ready for import into any standard calendar application.
+Extracts: sessions, exams, quizzes, holidays, deadlines, readings, assignments, projects. Detects weekly patterns, infers missing routine sessions (clearly marked), lets you collapse/expand recurrence, edit details, and export.
 
-The core principle is to respect existing workflows. Students already have their preferred calendar systems; this tool acts as a powerful, one-time import utility—not another calendar to manage.
+## Core Features
 
-## Features
+-   Multi-file PDF/image upload
+-   Paste raw syllabus text (no file needed)
+-   File gallery + per-file delete (auto removes its events)
+-   Optional context prompt for disambiguation
+-   Type normalization & color legend
+-   Inferred session gap fill (warnings shown)
+-   Collapse/expand weekly recurrence
+-   Month / Week / Agenda / List views (drag & drop dates)
+-   Inline edit modal (type, times, notes)
+-   Reset + debug JSON view
+-   Export: .ics + JSON
+-   Client-only state (privacy)
 
--   **Multi-Format Upload:** Supports both PDF and image (.png, .jpg) files.
--   **AI-Powered Parsing:** Leverages a Large Language Model (LLM) on the backend for highly accurate and context-aware extraction of event details (title, date, time, type).
--   **Interactive Review Interface:** Displays extracted events in an editable list, allowing users to quickly verify, modify, or delete entries before export.
--   **One-Click Export:** Generates a universal .ics calendar file compatible with Google Calendar, Apple Calendar, Outlook, and more.
--   **Privacy-Focused:** The backend is stateless. No personal data or syllabus contents are stored on the server after processing is complete.
+## Quick Start
 
-## Tech Stack & Architecture
+```bash
+pnpm install
+cp .env.local.example .env.local   # create and add GOOGLE_GENERATIVE_AI_API_KEY
+pnpm dev
+```
 
-This project is built using a modern full-stack approach with Next.js.
+Open http://localhost:3000 and drop your syllabus files.
 
-**Frontend:** Next.js 14 (App Router), React, TypeScript, Tailwind CSS
-**Backend:** Next.js API Routes (Serverless Functions)
-**Parsing Engine:** External Large Language Model (e.g., GPT, Claude, Llama) for intelligent text analysis
+`.env.local`:
 
-**Key Libraries:**
+```env
+GOOGLE_GENERATIVE_AI_API_KEY=your_key_here
+```
 
--   `ics.js` for generating the calendar file on the client-side
--   `react-dropzone` for the file upload interface
+## Usage Flow
 
-### Architecture Overview
+1. Choose Upload Files (drag/drop PDFs or images) OR Paste Text and paste copied syllabus content.
+2. (Optional) Add context (course code, meeting pattern hints).
+3. Extract & review events; inferred sessions are labeled.
+4. Toggle recurrence to see all occurrences if needed.
+5. Edit titles/times/types as desired.
+6. Export `.ics` and/or JSON.
 
-1. A user uploads a file via the Next.js frontend.
-2. The file is securely sent to a Next.js API Route.
-3. The API route extracts the text and sends it to an LLM API for parsing.
-4. The LLM returns structured JSON data (a list of events).
-5. The API route sends the clean JSON back to the frontend for display.
-6. The user confirms the events, and the .ics file is generated entirely in the browser.
+## Tech Stack
 
-This design ensures the user's browser remains fast and responsive while leveraging powerful server-side AI for maximum accuracy.
+Next.js (App Router) · React 19 · TypeScript · Tailwind · Gemini via Vercel AI SDK · `ics` · `zod` · `react-dropzone`.
 
-## Getting Started
+## Roadmap (see `/todo` page)
 
-### Prerequisites
+Light mode • Biweekly/monthly recurrence • Timezones • Bulk edit • Hide inferred toggle • Local persistence • Accessibility audit • Canvas/LMS import.
 
--   Node.js (v18.0 or later)
--   pnpm or yarn
--   An API key from your chosen LLM provider
+## Author
 
-### Installation
+Built by [Dinesh Chhantyal](https://dineshchhantyal.com). Issues & PRs welcome.
 
-1. **Clone the repository:**
-    ```bash
-    git clone https://github.com/your-username/syllabus-scraper.git
-    cd syllabus-scraper
-    ```
-2. **Install dependencies:**
-    ```bash
-    pnpm install
-    # or
-    yarn install
-    ```
-3. **Set up environment variables:**
-   Create a file named `.env.local` in the root of the project and add your LLM API key:
-    ```env
-    LLM_API_KEY="your_api_key_here"
-    ```
-4. **Run the development server:**
-    ```bash
-    pnpm dev
-    ```
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+---
+
+Minimal on purpose. Need more detail? Check the code.

@@ -1,19 +1,14 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 export default function ThemeSwitcher() {
-  const [theme, setTheme] = useState("light");
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
-  }, [theme]);
-
-  return (
-    <button
-      className="px-3 py-2 rounded-lg bg-primary text-white font-medium shadow hover:bg-primary/80"
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-    >
-      {theme === "light" ? "🌞 Light" : "🌚 Dark"}
-    </button>
-  );
+    // Force dark theme on mount
+    useEffect(() => {
+        document.documentElement.classList.add("dark");
+    }, []);
+    return (
+        <div className="text-[11px] px-2 py-1 rounded bg-neutral-800 text-neutral-300 border border-neutral-700 select-none">
+            Dark theme
+        </div>
+    );
 }
