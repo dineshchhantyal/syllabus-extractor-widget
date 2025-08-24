@@ -95,7 +95,8 @@ export default function RootLayout({
                 </main>
                 <footer className="mt-12 border-t border-foreground-muted py-6 text-center text-[11px] text-foreground-muted">
                     <p>
-                        Created by
+                        {" "}
+                        Created by{" "}
                         <a
                             className="underline text-foreground"
                             href="https://dineshchhantyal.com"
@@ -103,9 +104,12 @@ export default function RootLayout({
                             rel="noopener noreferrer"
                         >
                             Dinesh Chhantyal
-                        </a>
-                        ·
-                        <Link className="underline text-foreground" href="/todo">
+                        </a>{" "}
+                        ·{" "}
+                        <Link
+                            className="underline text-foreground"
+                            href="/todo"
+                        >
                             Roadmap
                         </Link>
                     </p>

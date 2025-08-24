@@ -50,7 +50,9 @@ export default function WeekView({ weekDate, events, onEventClick }: Props) {
                                     weekday: "short",
                                 })}
                             </span>
-                            <span className="text-foreground">{d.getDate()}</span>
+                            <span className="text-foreground">
+                                {d.getDate()}
+                            </span>
                         </div>
                         <div className="flex flex-col gap-1 overflow-auto">
                             {dayEvents.map((ev) => (

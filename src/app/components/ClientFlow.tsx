@@ -383,16 +383,18 @@ export default function ClientFlow() {
                                 </div>
                             </div>
                             <div className="flex flex-wrap gap-2 items-center text-[10px]">
-                                {Object.entries(EVENT_TYPE_COLORS).map(([k, v]) => (
-                                    <span
-                                        key={k}
-                                        className={`px-2 py-0.5 rounded-md border text-[10px] font-medium tracking-wide inline-flex items-center gap-1 ${v.container} ${v.text} shadow-sm/50`}
-                                        role="status"
-                                        aria-label={`${k} event label`}
-                                    >
-                                        {k}
-                                    </span>
-                                ))}
+                                {Object.entries(EVENT_TYPE_COLORS).map(
+                                    ([k, v]) => (
+                                        <span
+                                            key={k}
+                                            className={`px-2 py-0.5 rounded-md border text-[10px] font-medium tracking-wide inline-flex items-center gap-1 ${v.container} ${v.text} shadow-sm/50`}
+                                            role="status"
+                                            aria-label={`${k} event label`}
+                                        >
+                                            {k}
+                                        </span>
+                                    )
+                                )}
                             </div>
                             <EventList
                                 events={activeEvents}

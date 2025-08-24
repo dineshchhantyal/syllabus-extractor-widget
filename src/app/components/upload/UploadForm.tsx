@@ -58,7 +58,9 @@ export default function UploadForm({ onFileSelected, isLoading }: Props) {
                 >
                     Paste Text
                 </button>
-                <span className="text-foreground-muted">No data stored server-side.</span>
+                <span className="text-foreground-muted">
+                    No data stored server-side.
+                </span>
             </div>
             {pasteMode && (
                 <div className="rounded-xl border border-foreground/15 p-5 bg-background-alt dark:bg-background-muted space-y-3">
@@ -91,18 +93,32 @@ export default function UploadForm({ onFileSelected, isLoading }: Props) {
                             loading={isLoading}
                             onClick={() => {
                                 if (!pasted.trim()) return;
-                                const blob = new Blob([pasted], { type: "text/plain" });
-                                const synthetic = new File([blob], `pasted-${Date.now()}.txt`, { type: "text/plain" });
-                                onFileSelected(synthetic, { context: contextText || undefined });
+                                const blob = new Blob([pasted], {
+                                    type: "text/plain",
+                                });
+                                const synthetic = new File(
+                                    [blob],
+                                    `pasted-${Date.now()}.txt`,
+                                    { type: "text/plain" }
+                                );
+                                onFileSelected(synthetic, {
+                                    context: contextText || undefined,
+                                });
                                 setPasted("");
                             }}
                         >
                             {isLoading ? "Processing…" : "Extract From Text"}
                         </Button>
-                        {error && <span className="text-red-500 text-xs">{error}</span>}
+                        {error && (
+                            <span className="text-red-500 text-xs">
+                                {error}
+                            </span>
+                        )}
                     </div>
                     <p className="text-[11px] text-foreground-muted leading-relaxed">
-                        Tip: Copy from a PDF viewer or LMS page. Line breaks for each row/date improve accuracy. You can still refine and delete events after extraction.
+                        Tip: Copy from a PDF viewer or LMS page. Line breaks for
+                        each row/date improve accuracy. You can still refine and
+                        delete events after extraction.
                     </p>
                 </div>
             )}
@@ -136,16 +152,32 @@ export default function UploadForm({ onFileSelected, isLoading }: Props) {
                                 className="px-3 py-2 rounded-md bg-background-alt dark:bg-background-muted text-sm min-h-24 resize-y border border-foreground/15"
                             />
                             <p className="text-[11px] text-foreground-muted leading-relaxed">
-                                This guidance helps the AI interpret ambiguous dates (e.g. differentiate weekly lectures vs. one-off events, identify midterms/finals, or treat lines as session blocks). Leave blank if unsure.
+                                This guidance helps the AI interpret ambiguous
+                                dates (e.g. differentiate weekly lectures vs.
+                                one-off events, identify midterms/finals, or
+                                treat lines as session blocks). Leave blank if
+                                unsure.
                             </p>
                         </div>
                         <div className="space-y-3">
-                            <p className="text-base font-medium">Drag & drop syllabus files</p>
-                            <p className="text-xs text-foreground-muted">
-                                PDF, PNG or JPG • Multiple files supported • Processed with Gemini
+                            <p className="text-base font-medium">
+                                Drag & drop syllabus files
                             </p>
-                            {error && <p className="text-red-600 text-xs font-medium">{error}</p>}
-                            <Button type="button" loading={isLoading} size="md" variant="primary">
+                            <p className="text-xs text-foreground-muted">
+                                PDF, PNG or JPG • Multiple files supported •
+                                Processed with Gemini
+                            </p>
+                            {error && (
+                                <p className="text-red-600 text-xs font-medium">
+                                    {error}
+                                </p>
+                            )}
+                            <Button
+                                type="button"
+                                loading={isLoading}
+                                size="md"
+                                variant="primary"
+                            >
                                 {isLoading ? "Uploading…" : "Select Files"}
                             </Button>
                         </div>

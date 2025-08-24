@@ -35,8 +35,12 @@ export default function AgendaView({ events, onEventClick }: Props) {
                     </div>
                     <ul className="space-y-1">
                         {list
-                            .sort((a, b) => (a.startTime || "").localeCompare(b.startTime || ""))
-                            .map(ev => (
+                            .sort((a, b) =>
+                                (a.startTime || "").localeCompare(
+                                    b.startTime || ""
+                                )
+                            )
+                            .map((ev) => (
                                 <li key={ev.id}>
                                     <button
                                         type="button"
