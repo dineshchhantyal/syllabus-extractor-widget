@@ -78,7 +78,7 @@ export async function extractEventsFromFile(
         contextLines.push(`User Context: ${userContext.description}`);
     const systemInstruction = buildSystemInstruction(contextLines);
 
-    const model = google("gemini-1.5-flash");
+    const model = google("gemini-2.5-flash");
     let structured: { events: LLMEventSchema[] } | null = null;
     const structuredWarnings: string[] = [];
 

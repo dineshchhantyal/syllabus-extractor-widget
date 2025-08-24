@@ -35,22 +35,22 @@ export default function WeekView({ weekDate, events, onEventClick }: Props) {
     }, [events]);
 
     return (
-        <div className="grid grid-cols-7 gap-px bg-neutral-300 dark:bg-neutral-700 rounded overflow-hidden text-xs">
+        <div className="grid grid-cols-7 gap-px bg-background-muted dark:bg-background-alt rounded overflow-hidden text-xs border border-foreground/10 dark:border-foreground/20">
             {days.map((d) => {
                 const key = iso(d);
                 const dayEvents = eventsByDate[key] || [];
                 return (
                     <div
                         key={key}
-                        className="min-h-40 bg-white dark:bg-neutral-900 p-1 flex flex-col gap-1"
+                        className="min-h-40 bg-background-alt dark:bg-background-muted p-1 flex flex-col gap-1"
                     >
-                        <div className="text-[10px] font-semibold mb-1 flex items-center justify-between">
+                        <div className="text-[10px] font-semibold mb-1 flex items-center justify-between text-foreground-muted">
                             <span>
                                 {d.toLocaleDateString(undefined, {
                                     weekday: "short",
                                 })}
                             </span>
-                            <span>{d.getDate()}</span>
+                            <span className="text-foreground">{d.getDate()}</span>
                         </div>
                         <div className="flex flex-col gap-1 overflow-auto">
                             {dayEvents.map((ev) => (
@@ -58,7 +58,7 @@ export default function WeekView({ weekDate, events, onEventClick }: Props) {
                                     key={ev.id}
                                     type="button"
                                     onClick={() => onEventClick?.(ev)}
-                                    className="text-left rounded-md px-1.5 py-0.5 bg-primary-soft hover:bg-primary-softer border font-medium truncate border-[color:rgba(var(--primary-rgb)/0.3)] hover:border-[color:rgba(var(--primary-rgb)/0.45)]"
+                                    className="text-left rounded-md px-1.5 py-0.5 bg-primary-soft hover:bg-primary-softer border font-medium truncate border-[color:rgba(var(--primary-rgb)/0.35)] hover:border-[color:rgba(var(--primary-rgb)/0.5)] focus:outline-none focus:ring-2 focus:ring-primary/40"
                                 >
                                     {ev.startTime && (
                                         <span className="font-mono mr-1 opacity-70">
@@ -69,7 +69,7 @@ export default function WeekView({ weekDate, events, onEventClick }: Props) {
                                 </button>
                             ))}
                             {dayEvents.length === 0 && (
-                                <div className="text-[10px] text-neutral-400 italic">
+                                <div className="text-[10px] text-foreground-muted italic">
                                     —
                                 </div>
                             )}

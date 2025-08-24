@@ -51,10 +51,10 @@ export default function EventList({ events, onChange }: Props) {
                 <button
                     type="button"
                     onClick={() => setView("calendar")}
-                    className={`px-3 py-1 rounded ${
+                    className={`px-3 py-1 rounded border text-xs font-medium transition ${
                         view === "calendar"
-                            ? "bg-primary text-white"
-                            : "bg-neutral-200 dark:bg-neutral-700"
+                            ? "bg-primary text-on-primary border-primary"
+                            : "bg-background-alt dark:bg-background-muted border border-foreground/15 dark:border-foreground/25 text-foreground-muted hover:bg-background-muted/70 dark:hover:bg-background-alt/40"
                     }`}
                 >
                     Month
@@ -65,10 +65,10 @@ export default function EventList({ events, onChange }: Props) {
                         setWeekPivot(earliest);
                         setView("week");
                     }}
-                    className={`px-3 py-1 rounded ${
+                    className={`px-3 py-1 rounded border text-xs font-medium transition ${
                         view === "week"
-                            ? "bg-primary text-white"
-                            : "bg-neutral-200 dark:bg-neutral-700"
+                            ? "bg-primary text-on-primary border-primary"
+                            : "bg-background-alt dark:bg-background-muted border border-foreground/15 dark:border-foreground/25 text-foreground-muted hover:bg-background-muted/70 dark:hover:bg-background-alt/40"
                     }`}
                 >
                     Week
@@ -76,10 +76,10 @@ export default function EventList({ events, onChange }: Props) {
                 <button
                     type="button"
                     onClick={() => setView("agenda")}
-                    className={`px-3 py-1 rounded ${
+                    className={`px-3 py-1 rounded border text-xs font-medium transition ${
                         view === "agenda"
-                            ? "bg-primary text-white"
-                            : "bg-neutral-200 dark:bg-neutral-700"
+                            ? "bg-primary text-on-primary border-primary"
+                            : "bg-background-alt dark:bg-background-muted border border-foreground/15 dark:border-foreground/25 text-foreground-muted hover:bg-background-muted/70 dark:hover:bg-background-alt/40"
                     }`}
                 >
                     Agenda
@@ -87,10 +87,10 @@ export default function EventList({ events, onChange }: Props) {
                 <button
                     type="button"
                     onClick={() => setView("list")}
-                    className={`px-3 py-1 rounded ${
+                    className={`px-3 py-1 rounded border text-xs font-medium transition ${
                         view === "list"
-                            ? "bg-primary text-white"
-                            : "bg-neutral-200 dark:bg-neutral-700"
+                            ? "bg-primary text-on-primary border-primary"
+                            : "bg-background-alt dark:bg-background-muted border border-foreground/15 dark:border-foreground/25 text-foreground-muted hover:bg-background-muted/70 dark:hover:bg-background-alt/40"
                     }`}
                 >
                     List
@@ -136,20 +136,20 @@ export default function EventList({ events, onChange }: Props) {
             )}
             {editing && (
                 <div
-                    className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm bg-black/50"
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm bg-background/80 dark:bg-background/80"
                     role="dialog"
                     aria-modal="true"
                     aria-label="Edit event"
                 >
-                    <div className="w-full max-w-lg rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-xl overflow-hidden">
-                        <div className="flex items-center justify-between px-5 py-3 border-b border-neutral-200 dark:border-neutral-800">
-                            <h3 className="text-sm font-semibold tracking-wide uppercase text-neutral-500">
+                    <div className="w-full max-w-lg rounded-xl border border-foreground/15 dark:border-foreground/25 bg-background-alt dark:bg-background-muted shadow-xl overflow-hidden">
+                        <div className="flex items-center justify-between px-5 py-3 border-b border-foreground/10 dark:border-foreground/15 bg-background-muted dark:bg-background-alt">
+                            <h3 className="text-sm font-semibold tracking-wide uppercase text-foreground-muted">
                                 Edit Event
                             </h3>
                             <button
                                 onClick={() => setEditing(null)}
                                 aria-label="Close"
-                                className="p-1 rounded hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                                className="p-1 rounded hover:bg-background-alt dark:hover:bg-background-muted"
                             >
                                 <span className="block w-4 h-4">✕</span>
                             </button>
@@ -162,11 +162,11 @@ export default function EventList({ events, onChange }: Props) {
                             className="p-5 space-y-5 text-sm"
                         >
                             <div className="space-y-1">
-                                <label className="text-xs font-medium text-neutral-500">
+                                <label className="text-xs font-medium text-foreground-muted">
                                     Title
                                 </label>
                                 <input
-                                    className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/40"
+                                    className="w-full rounded-md border border-foreground/15 dark:border-foreground/25 bg-background-alt dark:bg-background-muted px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/40"
                                     value={editing.title}
                                     onChange={(e) => {
                                         const val = {
@@ -181,12 +181,12 @@ export default function EventList({ events, onChange }: Props) {
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-1">
-                                    <label className="text-xs font-medium text-neutral-500">
+                                    <label className="text-xs font-medium text-foreground-muted">
                                         Date
                                     </label>
                                     <input
                                         type="date"
-                                        className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/40"
+                                        className="w-full rounded-md border border-foreground/15 dark:border-foreground/25 bg-background-alt dark:bg-background-muted px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/40"
                                         value={editing.date}
                                         onChange={(e) => {
                                             const val = {
@@ -200,7 +200,7 @@ export default function EventList({ events, onChange }: Props) {
                                     />
                                 </div>
                                 <div className="space-y-1">
-                                    <label className="text-xs font-medium text-neutral-500">
+                                    <label className="text-xs font-medium text-foreground-muted">
                                         Type
                                     </label>
                                     <div className="flex flex-wrap gap-1">
@@ -222,8 +222,8 @@ export default function EventList({ events, onChange }: Props) {
                                                             ? eventTypeClass(
                                                                   t
                                                               ) +
-                                                              " ring-2 ring-offset-1 ring-primary/40 dark:ring-offset-neutral-900"
-                                                            : "bg-neutral-100 dark:bg-neutral-800 border-neutral-300 dark:border-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-700"
+                                                              " ring-2 ring-offset-1 ring-primary/40"
+                                                            : "bg-background-alt dark:bg-background-muted border-foreground/15 dark:border-foreground/25 hover:bg-background-muted/70 dark:hover:bg-background-alt/40"
                                                     }`}
                                                 >
                                                     {t}
@@ -235,12 +235,12 @@ export default function EventList({ events, onChange }: Props) {
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-1">
-                                    <label className="text-xs font-medium text-neutral-500">
+                                    <label className="text-xs font-medium text-foreground-muted">
                                         Start time
                                     </label>
                                     <input
                                         type="time"
-                                        className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/40"
+                                        className="w-full rounded-md border border-foreground/15 dark:border-foreground/25 bg-background-alt dark:bg-background-muted px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/40"
                                         value={editing.startTime || ""}
                                         onChange={(e) => {
                                             const val = {
@@ -253,7 +253,7 @@ export default function EventList({ events, onChange }: Props) {
                                     />
                                 </div>
                                 <div className="space-y-1">
-                                    <label className="text-xs font-medium text-neutral-500 flex items-center justify-between">
+                                    <label className="text-xs font-medium text-foreground-muted flex items-center justify-between">
                                         End time
                                         <button
                                             type="button"
@@ -288,7 +288,7 @@ export default function EventList({ events, onChange }: Props) {
                                     </label>
                                     <input
                                         type="time"
-                                        className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/40"
+                                        className="w-full rounded-md border border-foreground/15 dark:border-foreground/25 bg-background-alt dark:bg-background-muted px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/40"
                                         value={editing.endTime || ""}
                                         onChange={(e) => {
                                             const val = {
@@ -302,12 +302,12 @@ export default function EventList({ events, onChange }: Props) {
                                 </div>
                             </div>
                             <div className="space-y-1">
-                                <label className="text-xs font-medium text-neutral-500">
+                                <label className="text-xs font-medium text-foreground-muted">
                                     Notes
                                 </label>
                                 <textarea
                                     placeholder="Add contextual notes (optional)"
-                                    className="w-full min-h-[80px] resize-y rounded-md border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/40"
+                                    className="w-full min-h-[80px] resize-y rounded-md border border-foreground/15 dark:border-foreground/25 bg-background-alt dark:bg-background-muted px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/40"
                                     value={editing.notes || ""}
                                     onChange={(e) => {
                                         const val = {
@@ -319,11 +319,11 @@ export default function EventList({ events, onChange }: Props) {
                                     }}
                                 />
                             </div>
-                            <div className="flex justify-end gap-2 pt-2 border-t border-neutral-200 dark:border-neutral-800">
+                            <div className="flex justify-end gap-2 pt-2 border-t border-foreground/10 dark:border-foreground/15">
                                 <button
                                     type="button"
                                     onClick={() => setEditing(null)}
-                                    className="px-4 py-2 rounded-md text-xs font-medium bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600"
+                                    className="px-4 py-2 rounded-md text-xs font-medium bg-background-alt dark:bg-background-muted hover:bg-background-muted/70 dark:hover:bg-background-alt/40 border border-foreground/15 dark:border-foreground/25"
                                 >
                                     Done
                                 </button>

@@ -102,12 +102,12 @@ export default function CalendarView({
     // centralized color mapping now via eventTypeClass
 
     return (
-        <div className="border border-neutral-200 dark:border-neutral-800 rounded-lg overflow-hidden bg-[var(--background-alt)] dark:bg-neutral-900 shadow-sm">
-            <div className="flex items-center justify-between px-4 py-2 bg-[var(--background-muted)] dark:bg-neutral-800">
+        <div className="border border-foreground/15 dark:border-foreground/25 rounded-lg overflow-hidden bg-background-alt dark:bg-background-muted shadow-sm">
+            <div className="flex items-center justify-between px-4 py-2 bg-background-muted dark:bg-background-alt border-b border-foreground/10 dark:border-foreground/15">
                 <button
                     type="button"
                     onClick={() => moveMonth(-1)}
-                    className="px-2 py-1 text-sm hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded"
+                    className="px-2 py-1 text-sm rounded hover:bg-background-alt dark:hover:bg-background-muted"
                     aria-label="Previous month"
                 >
                     ←
@@ -121,13 +121,13 @@ export default function CalendarView({
                 <button
                     type="button"
                     onClick={() => moveMonth(1)}
-                    className="px-2 py-1 text-sm hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded"
+                    className="px-2 py-1 text-sm rounded hover:bg-background-alt dark:hover:bg-background-muted"
                     aria-label="Next month"
                 >
                     →
                 </button>
             </div>
-            <div className="hidden sm:grid grid-cols-7 text-xs font-medium border-b border-neutral-200 dark:border-neutral-700 bg-[var(--background-muted)] dark:bg-neutral-800">
+            <div className="hidden sm:grid grid-cols-7 text-xs font-medium border-b border-foreground/10 dark:border-foreground/15 bg-background-muted dark:bg-background-alt">
                 {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
                     <div key={d} className="px-2 py-1 text-center">
                         {d}
@@ -144,10 +144,10 @@ export default function CalendarView({
                             key={i}
                             onDragOver={(e) => e.preventDefault()}
                             onDrop={(e) => handleDrop(e, day)}
-                            className={`relative min-h-20 border border-neutral-200 dark:border-neutral-800 p-1 flex flex-col gap-1 ${
+                            className={`relative min-h-20 border border-foreground/10 dark:border-foreground/20 p-1 flex flex-col gap-1 ${
                                 inMonth
-                                    ? "bg-white dark:bg-neutral-950"
-                                    : "bg-[var(--background-muted)] dark:bg-neutral-800 opacity-60"
+                                    ? "bg-background-alt dark:bg-background-muted"
+                                    : "bg-background-muted dark:bg-background-alt opacity-60"
                             }`}
                         >
                             <div className="text-right text-[10px] font-medium">
@@ -160,18 +160,18 @@ export default function CalendarView({
                                         draggable
                                         onDragStart={(e) => drag(e, ev.id)}
                                         onClick={() => onEventClick?.(ev)}
-                                        className={`group rounded-md px-1.5 py-0.5 cursor-pointer select-none shadow-sm hover:shadow border text-[11px] leading-tight flex flex-col gap-0.5 transition ${eventTypeClass(
+                                        className={`group rounded-md px-1.5 py-0.5 cursor-pointer select-none shadow-sm hover:shadow-md border text-[11px] sm:text-[12px] leading-tight flex flex-col gap-0.5 transition-colors backdrop-blur-[1px] ${eventTypeClass(
                                             ev.type
-                                        )}`}
+                                        )} focus:outline-none focus:ring-1 focus:ring-primary/60`}
                                         title={ev.title}
                                         role="button"
                                         aria-label={`Event ${ev.title}`}
                                     >
-                                        <span className="font-medium truncate block group-hover:underline underline-offset-2">
+                                        <span className="font-semibold truncate block group-hover:underline underline-offset-2">
                                             {ev.title}
                                         </span>
                                         {ev.startTime && (
-                                            <span className="text-[10px] opacity-70 font-mono">
+                                            <span className="text-[10px] opacity-75 font-mono tracking-tight">
                                                 {ev.startTime}
                                             </span>
                                         )}

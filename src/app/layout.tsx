@@ -60,11 +60,11 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
             >
-                <header className="w-full border-b border-neutral-200 dark:border-neutral-800 bg-gradient-to-r from-[rgba(var(--primary-rgb)/0.15)] via-white to-[rgba(var(--primary-rgb)/0.15)] dark:from-[rgba(var(--primary-rgb)/0.12)] dark:via-neutral-950 dark:to-[rgba(var(--primary-rgb)/0.12)] backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-neutral-950/70 z-10">
+                <header className="w-full border-b border-foreground-muted bg-gradient-to-r from-[rgba(var(--primary-rgb)/0.15)] via-background to-[rgba(var(--primary-rgb)/0.15)] dark:from-[rgba(var(--primary-rgb)/0.12)] dark:via-background-muted dark:to-[rgba(var(--primary-rgb)/0.12)] backdrop-blur supports-[backdrop-filter]:bg-background-alt dark:supports-[backdrop-filter]:bg-background-muted z-10">
                     <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between gap-6">
                         <Link
                             href="/"
-                            className="text-sm font-semibold tracking-tight flex items-center gap-2"
+                            className="text-sm font-semibold tracking-tight flex items-center gap-2 text-foreground"
                         >
                             <span
                                 className="inline-block w-6 h-6 rounded-md bg-gradient-to-br from-[rgb(var(--primary-rgb))] to-[rgb(var(--primary-rgb-accent))] shadow-sm"
@@ -75,7 +75,7 @@ export default function RootLayout({
                         <nav className="flex items-center gap-4 text-xs font-medium">
                             <Link
                                 href="/todo"
-                                className="px-2 py-1 rounded hover:bg-primary-softer hover:text-[color:rgba(var(--primary-rgb)/0.9)] transition"
+                                className="px-2 py-1 rounded hover:bg-primary-softer hover:text-[color:rgba(var(--primary-rgb)/0.9)] transition text-foreground-muted"
                             >
                                 Roadmap
                             </Link>
@@ -83,7 +83,7 @@ export default function RootLayout({
                                 href="https://dineshchhantyal.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="px-2 py-1 rounded hover:bg-primary-softer hover:text-[color:rgba(var(--primary-rgb)/0.9)] transition"
+                                className="px-2 py-1 rounded hover:bg-primary-softer hover:text-[color:rgba(var(--primary-rgb)/0.9)] transition text-foreground-muted"
                             >
                                 Author
                             </a>
@@ -93,19 +93,19 @@ export default function RootLayout({
                 <main className="flex-1 mx-auto w-full max-w-6xl px-4 py-8">
                     {children}
                 </main>
-                <footer className="mt-12 border-t border-neutral-200 dark:border-neutral-800 py-6 text-center text-[11px] text-neutral-500">
+                <footer className="mt-12 border-t border-foreground-muted py-6 text-center text-[11px] text-foreground-muted">
                     <p>
-                        Created by{" "}
+                        Created by
                         <a
-                            className="underline"
+                            className="underline text-foreground"
                             href="https://dineshchhantyal.com"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             Dinesh Chhantyal
-                        </a>{" "}
-                        ·{" "}
-                        <Link className="underline" href="/todo">
+                        </a>
+                        ·
+                        <Link className="underline text-foreground" href="/todo">
                             Roadmap
                         </Link>
                     </p>

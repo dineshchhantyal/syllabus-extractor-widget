@@ -99,6 +99,16 @@ body {
         border-color: #222;
     }
 
+/* Added surface and text utility classes */
+.surface-base { background: var(--background); }
+.surface-alt { background: var(--background-alt); }
+.surface-muted { background: var(--background-muted); }
+.text-foreground { color: var(--foreground); }
+.text-foreground-muted { color: var(--foreground-muted); }
+.border-subtle { border-color: color-mix(in srgb, var(--foreground) 12%, transparent); }
+.border-subtle-strong { border-color: color-mix(in srgb, var(--foreground) 22%, transparent); }
+.text-on-primary { color: var(--on-primary); }
+
 /* Utility helpers (non Tailwind) */
 /* Utility (prefer tokens, fall back to direct) */
 .text-primary {

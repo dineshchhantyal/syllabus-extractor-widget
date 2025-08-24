@@ -19,13 +19,13 @@ export default function AgendaView({ events, onEventClick }: Props) {
     }, [events]);
 
     if (!grouped.length)
-        return <p className="text-sm text-neutral-500">No events.</p>;
+        return <p className="text-sm text-foreground-muted">No events.</p>;
 
     return (
         <div className="space-y-6">
             {grouped.map(([date, list]) => (
                 <div key={date} className="space-y-2">
-                    <div className="text-xs font-semibold tracking-wide text-neutral-500 flex items-center gap-2">
+                    <div className="text-xs font-semibold tracking-wide text-foreground-muted flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-primary" />
                         {new Date(date).toLocaleDateString(undefined, {
                             weekday: "short",
@@ -35,33 +35,29 @@ export default function AgendaView({ events, onEventClick }: Props) {
                     </div>
                     <ul className="space-y-1">
                         {list
-                            .sort((a, b) =>
-                                (a.startTime || "").localeCompare(
-                                    b.startTime || ""
-                                )
-                            )
-                            .map((ev) => (
+                            .sort((a, b) => (a.startTime || "").localeCompare(b.startTime || ""))
+                            .map(ev => (
                                 <li key={ev.id}>
                                     <button
                                         type="button"
                                         onClick={() => onEventClick?.(ev)}
-                                        className="w-full text-left px-3 py-2 rounded-md bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-[color:rgba(var(--primary-rgb)/0.5)] hover:bg-primary-softer flex flex-col gap-1 transition"
+                                        className="w-full text-left px-4 py-2.5 rounded-lg bg-background-alt dark:bg-background-muted border border-foreground/10 dark:border-foreground/20 hover:border-primary/60 hover:bg-background-muted/70 dark:hover:bg-background-alt/40 flex flex-col gap-1 transition focus:outline-none focus:ring-2 focus:ring-primary/40"
                                     >
-                                        <div className="flex items-center gap-2">
+                                        <div className="flex items-center gap-2 flex-wrap">
                                             {ev.startTime && (
-                                                <span className="text-[11px] font-mono px-1 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700">
+                                                <span className="text-[11px] font-mono px-1.5 py-0.5 rounded-md bg-background dark:bg-background-alt border border-foreground/15 dark:border-foreground/25 text-foreground">
                                                     {ev.startTime}
                                                 </span>
                                             )}
-                                            <span className="text-sm font-medium truncate">
+                                            <span className="text-sm font-medium truncate max-w-[50%] text-foreground">
                                                 {ev.title}
                                             </span>
-                                            <span className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded bg-primary-soft text-[color:rgba(var(--primary-rgb)/0.85)] dark:text-[color:rgba(var(--primary-rgb)/0.9)] border border-[color:rgba(var(--primary-rgb)/0.3)]">
+                                            <span className="text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-md bg-primary-soft text-[color:rgba(var(--primary-rgb)/0.85)] dark:text-[color:rgba(var(--primary-rgb)/0.9)] border border-[color:rgba(var(--primary-rgb)/0.35)] font-semibold">
                                                 {ev.type}
                                             </span>
                                         </div>
                                         {ev.notes && (
-                                            <p className="text-[11px] text-neutral-500 line-clamp-2">
+                                            <p className="text-[11px] text-foreground-muted line-clamp-2">
                                                 {ev.notes}
                                             </p>
                                         )}

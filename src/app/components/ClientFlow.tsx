@@ -235,8 +235,8 @@ export default function ClientFlow() {
                                 </div>
                             )}
                         </div>
-                        <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-sm">
-                            <div className="px-3 py-2 border-b border-neutral-200 dark:border-neutral-800 text-xs font-semibold tracking-wide uppercase text-neutral-500">
+                        <div className="rounded-lg border border-foreground-muted dark:border-foreground bg-background-alt dark:bg-background-muted shadow-sm">
+                            <div className="px-3 py-2 border-b border-foreground-muted dark:border-foreground text-xs font-semibold tracking-wide uppercase text-foreground-muted dark:text-foreground">
                                 Workflow
                             </div>
                             <ol className="p-4 space-y-3 text-sm">
@@ -248,13 +248,13 @@ export default function ClientFlow() {
                                     }`}
                                 >
                                     <div className="flex items-start gap-2">
-                                        <span className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-medium bg-primary text-white">
+                                        <span className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-medium bg-primary text-on-primary">
                                             1
                                         </span>{" "}
                                         Upload syllabus
                                     </div>
                                     {!rawEvents.length && (
-                                        <p className="text-[11px] text-neutral-500">
+                                        <p className="text-[11px] text-foreground-muted dark:text-foreground">
                                             Drop or select your PDF/image to
                                             begin.
                                         </p>
@@ -268,13 +268,13 @@ export default function ClientFlow() {
                                     }`}
                                 >
                                     <div className="flex items-start gap-2">
-                                        <span className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-medium bg-primary text-white">
+                                        <span className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-medium bg-primary text-on-primary">
                                             2
                                         </span>{" "}
                                         Review & edit events
                                     </div>
                                     {rawEvents.length && (
-                                        <p className="text-[11px] text-neutral-500">
+                                        <p className="text-[11px] text-foreground-muted dark:text-foreground">
                                             Click events in calendar to
                                             fine‑tune details.
                                         </p>
@@ -288,13 +288,13 @@ export default function ClientFlow() {
                                     }`}
                                 >
                                     <div className="flex items-start gap-2">
-                                        <span className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-medium bg-primary text-white">
+                                        <span className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-medium bg-primary text-on-primary">
                                             3
                                         </span>{" "}
                                         Expand recurrence
                                     </div>
                                     {collapsedEvents.length && (
-                                        <p className="text-[11px] text-neutral-500">
+                                        <p className="text-[11px] text-foreground-muted dark:text-foreground">
                                             Toggle recurrence to see all
                                             sessions.
                                         </p>
@@ -308,13 +308,13 @@ export default function ClientFlow() {
                                     }`}
                                 >
                                     <div className="flex items-start gap-2">
-                                        <span className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-medium bg-primary text-white">
+                                        <span className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-medium bg-primary text-on-primary">
                                             4
                                         </span>{" "}
                                         Export
                                     </div>
                                     {collapsedEvents.length && (
-                                        <p className="text-[11px] text-neutral-500">
+                                        <p className="text-[11px] text-foreground-muted dark:text-foreground">
                                             Download .ics or JSON for calendar
                                             import.
                                         </p>
@@ -349,7 +349,7 @@ export default function ClientFlow() {
                                     Extracted Events
                                 </h2>
                                 <div className="flex items-center gap-2 flex-wrap">
-                                    <label className="relative group text-xs flex items-center gap-1 px-2 py-1 rounded bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 cursor-pointer">
+                                    <label className="relative group text-xs flex items-center gap-1 px-2 py-1 rounded bg-background-alt dark:bg-background-muted border border-foreground-muted dark:border-foreground text-foreground-muted dark:text-foreground">
                                         <input
                                             type="checkbox"
                                             className="scale-110"
@@ -359,7 +359,7 @@ export default function ClientFlow() {
                                             }
                                         />
                                         Show repeated sessions
-                                        <span className="hidden group-hover:block absolute -bottom-8 left-0 text-[10px] bg-neutral-800 text-white px-2 py-1 rounded shadow">
+                                        <span className="hidden group-hover:block absolute -bottom-8 left-0 text-[10px] bg-background-muted text-foreground px-2 py-1 rounded shadow">
                                             Displays every occurrence of weekly
                                             patterns detected.
                                         </span>
@@ -374,7 +374,7 @@ export default function ClientFlow() {
                                                 setWarnings([]);
                                             }
                                         }}
-                                        className="text-xs px-2 py-1 rounded bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-700"
+                                        className="text-xs px-2 py-1 rounded bg-background-alt dark:bg-background-muted border border-foreground-muted dark:border-foreground text-foreground-muted dark:text-foreground hover:bg-background dark:hover:bg-background-alt"
                                     >
                                         Reset
                                     </button>
@@ -383,16 +383,16 @@ export default function ClientFlow() {
                                 </div>
                             </div>
                             <div className="flex flex-wrap gap-2 items-center text-[10px]">
-                                {Object.entries(EVENT_TYPE_COLORS).map(
-                                    ([k, v]) => (
-                                        <span
-                                            key={k}
-                                            className={`px-1.5 py-0.5 rounded border capitalize ${v.container} ${v.text}`}
-                                        >
-                                            {k}
-                                        </span>
-                                    )
-                                )}
+                                {Object.entries(EVENT_TYPE_COLORS).map(([k, v]) => (
+                                    <span
+                                        key={k}
+                                        className={`px-2 py-0.5 rounded-md border text-[10px] font-medium tracking-wide inline-flex items-center gap-1 ${v.container} ${v.text} shadow-sm/50`}
+                                        role="status"
+                                        aria-label={`${k} event label`}
+                                    >
+                                        {k}
+                                    </span>
+                                ))}
                             </div>
                             <EventList
                                 events={activeEvents}

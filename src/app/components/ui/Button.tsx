@@ -23,10 +23,10 @@ export default function Button({
         "inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
     const variants: Record<string, string> = {
         primary:
-            "btn-primary text-[15px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[rgb(var(--ring-primary))] dark:focus-visible:ring-[rgb(var(--ring-primary))]",
+            "btn-primary text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[rgb(var(--ring-primary))]",
         secondary:
-            "bg-neutral-200 text-neutral-900 hover:bg-neutral-300 dark:bg-neutral-700 dark:text-neutral-100 dark:hover:bg-neutral-600 focus-visible:ring-neutral-400",
-        ghost: "bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200 focus-visible:ring-neutral-400",
+            "bg-background-alt dark:bg-background-muted text-foreground hover:bg-background-muted/70 dark:hover:bg-background-alt/40 border border-foreground/20 dark:border-foreground/20",
+        ghost: "bg-transparent hover:bg-background-alt dark:hover:bg-background-muted text-foreground-muted dark:text-foreground-muted",
         danger: "bg-red-600 text-white hover:bg-red-500 focus-visible:ring-red-500",
     };
     const sizes: Record<string, string> = {

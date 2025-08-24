@@ -22,32 +22,32 @@ export default function EventItem({ event, onChange, onDelete }: Props) {
     }
 
     return (
-        <div className="grid gap-2 sm:grid-cols-6 items-start border-b border-neutral-200 dark:border-neutral-800 py-3">
+        <div className="grid gap-2 sm:grid-cols-6 items-start border-b border-foreground/10 dark:border-foreground/20 py-3">
             <input
-                className="sm:col-span-2 px-2 py-1 rounded-md bg-neutral-100 dark:bg-neutral-800"
+                className="sm:col-span-2 px-2 py-1 rounded-md bg-background-alt dark:bg-background-muted border border-foreground/15 dark:border-foreground/25"
                 value={event.title}
                 onChange={(e) => update("title", e.target.value)}
             />
             <input
                 type="date"
-                className="px-2 py-1 rounded-md bg-neutral-100 dark:bg-neutral-800"
+                className="px-2 py-1 rounded-md bg-background-alt dark:bg-background-muted border border-foreground/15 dark:border-foreground/25"
                 value={event.date}
                 onChange={(e) => update("date", e.target.value)}
             />
             <input
                 placeholder="Start"
-                className="px-2 py-1 rounded-md bg-neutral-100 dark:bg-neutral-800"
+                className="px-2 py-1 rounded-md bg-background-alt dark:bg-background-muted border border-foreground/15 dark:border-foreground/25"
                 value={event.startTime || ""}
                 onChange={(e) => update("startTime", e.target.value)}
             />
             <input
                 placeholder="End"
-                className="px-2 py-1 rounded-md bg-neutral-100 dark:bg-neutral-800"
+                className="px-2 py-1 rounded-md bg-background-alt dark:bg-background-muted border border-foreground/15 dark:border-foreground/25"
                 value={event.endTime || ""}
                 onChange={(e) => update("endTime", e.target.value)}
             />
             <select
-                className="px-2 py-1 rounded-md bg-neutral-100 dark:bg-neutral-800"
+                className="px-2 py-1 rounded-md bg-background-alt dark:bg-background-muted border border-foreground/15 dark:border-foreground/25"
                 value={event.type}
                 onChange={(e) =>
                     update("type", e.target.value as SyllabusEvent["type"])
@@ -60,19 +60,19 @@ export default function EventItem({ event, onChange, onDelete }: Props) {
             </select>
             <textarea
                 placeholder="Notes"
-                className="sm:col-span-6 px-2 py-1 rounded-md bg-neutral-100 dark:bg-neutral-800"
+                className="sm:col-span-6 px-2 py-1 rounded-md bg-background-alt dark:bg-background-muted border border-foreground/15 dark:border-foreground/25"
                 value={event.notes || ""}
                 onChange={(e) => update("notes", e.target.value)}
             />
             {errors.length > 0 && (
-                <div className="sm:col-span-6 text-xs text-red-600">
+                <div className="sm:col-span-6 text-xs text-red-500 dark:text-red-400">
                     {errors.join(", ")}
                 </div>
             )}
             <button
                 type="button"
                 onClick={onDelete}
-                className="text-red-600 text-sm justify-self-start"
+                className="text-red-600 dark:text-red-400 text-sm justify-self-start"
             >
                 Delete
             </button>

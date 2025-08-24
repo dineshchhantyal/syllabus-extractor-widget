@@ -3,49 +3,42 @@ export const EVENT_TYPE_COLORS: Record<
     { container: string; text: string; badge?: string }
 > = {
     session: {
-        container:
-            "bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800",
-        text: "text-blue-700 dark:text-blue-300",
+        container: "bg-blue-100 dark:bg-blue-600 border-blue-200 dark:border-blue-500",
+        text: "text-blue-800 dark:text-white",
     },
     assignment: {
         container:
-            "bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800",
-        text: "text-emerald-700 dark:text-emerald-300",
+            "bg-emerald-100 dark:bg-emerald-600 border-emerald-200 dark:border-emerald-500",
+        text: "text-emerald-800 dark:text-white",
     },
     exam: {
-        container:
-            "bg-rose-50 dark:bg-rose-950/40 border-rose-200 dark:border-rose-800",
-        text: "text-rose-700 dark:text-rose-300",
+        container: "bg-rose-100 dark:bg-rose-600 border-rose-200 dark:border-rose-500",
+        text: "text-rose-800 dark:text-white",
     },
     quiz: {
         container:
-            "bg-fuchsia-50 dark:bg-fuchsia-950/40 border-fuchsia-200 dark:border-fuchsia-800",
-        text: "text-fuchsia-700 dark:text-fuchsia-300",
+            "bg-fuchsia-100 dark:bg-fuchsia-600 border-fuchsia-200 dark:border-fuchsia-500",
+        text: "text-fuchsia-800 dark:text-white",
     },
     project: {
-        container:
-            "bg-indigo-50 dark:bg-indigo-950/40 border-indigo-200 dark:border-indigo-800",
-        text: "text-indigo-700 dark:text-indigo-300",
+        container: "bg-indigo-100 dark:bg-indigo-600 border-indigo-200 dark:border-indigo-500",
+        text: "text-indigo-800 dark:text-white",
     },
     deadline: {
-        container:
-            "bg-orange-50 dark:bg-orange-950/40 border-orange-200 dark:border-orange-800",
-        text: "text-orange-700 dark:text-orange-300",
+        container: "bg-orange-100 dark:bg-orange-600 border-orange-200 dark:border-orange-500",
+        text: "text-orange-800 dark:text-white",
     },
     holiday: {
-        container:
-            "bg-lime-50 dark:bg-lime-950/40 border-lime-200 dark:border-lime-800",
-        text: "text-lime-700 dark:text-lime-300",
+        container: "bg-lime-100 dark:bg-lime-600 border-lime-200 dark:border-lime-500",
+        text: "text-lime-800 dark:text-white",
     },
     reading: {
-        container:
-            "bg-cyan-50 dark:bg-cyan-950/40 border-cyan-200 dark:border-cyan-800",
-        text: "text-cyan-700 dark:text-cyan-300",
+        container: "bg-cyan-100 dark:bg-cyan-600 border-cyan-200 dark:border-cyan-500",
+        text: "text-cyan-800 dark:text-white",
     },
     other: {
-        container:
-            "bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-800",
-        text: "text-amber-700 dark:text-amber-300",
+        container: "bg-amber-100 dark:bg-amber-600 border-amber-200 dark:border-amber-500",
+        text: "text-amber-800 dark:text-white",
     },
 };
 
