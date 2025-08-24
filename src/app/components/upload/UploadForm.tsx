@@ -41,8 +41,8 @@ export default function UploadForm({ onFileSelected, isLoading }: Props) {
                     onClick={() => setPasteMode(false)}
                     className={`px-3 py-1.5 rounded-md border transition ${
                         !pasteMode
-                            ? "border-primary bg-primary-soft text-neutral-100"
-                            : "border-neutral-700 text-neutral-400 hover:border-neutral-500"
+                            ? "border-primary bg-primary text-on-primary"
+                            : "border-foreground-muted text-foreground-muted hover:border-foreground"
                     }`}
                 >
                     Upload Files
@@ -52,26 +52,26 @@ export default function UploadForm({ onFileSelected, isLoading }: Props) {
                     onClick={() => setPasteMode(true)}
                     className={`px-3 py-1.5 rounded-md border transition ${
                         pasteMode
-                            ? "border-primary bg-primary-soft text-neutral-100"
-                            : "border-neutral-700 text-neutral-400 hover:border-neutral-500"
+                            ? "border-primary bg-primary text-on-primary"
+                            : "border-foreground-muted text-foreground-muted hover:border-foreground"
                     }`}
                 >
                     Paste Text
                 </button>
-                <span className="text-neutral-500">
+                <span className="text-foreground-muted">
                     No data stored server-side.
                 </span>
             </div>
             {pasteMode && (
-                <div className="rounded-xl border border-neutral-700 p-5 bg-neutral-900/50 space-y-3">
-                    <label className="text-[11px] font-medium uppercase tracking-wide text-neutral-400">
+                <div className="rounded-xl border border-foreground-muted p-5 bg-background-muted space-y-3">
+                    <label className="text-[11px] font-medium uppercase tracking-wide text-foreground-muted">
                         Raw Syllabus Text
                     </label>
                     <textarea
                         value={pasted}
                         onChange={(e) => setPasted(e.target.value)}
                         placeholder="Paste copied syllabus or table text here..."
-                        className="w-full min-h-48 resize-y rounded-md px-3 py-2 text-sm bg-neutral-800 border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-[rgba(var(--primary-rgb)/0.5)]"
+                        className="w-full min-h-48 resize-y rounded-md px-3 py-2 text-sm bg-background-alt border border-foreground-muted focus:outline-none focus:ring-2 focus:ring-[rgba(var(--primary-rgb)/0.5)]"
                     />
                     <div className="text-left flex flex-col gap-1">
                         <label className="text-[11px] font-medium uppercase tracking-wide text-neutral-500">
@@ -115,7 +115,7 @@ export default function UploadForm({ onFileSelected, isLoading }: Props) {
                             </span>
                         )}
                     </div>
-                    <p className="text-[11px] text-neutral-500 leading-relaxed">
+                    <p className="text-[11px] text-foreground-muted leading-relaxed">
                         Tip: Copy from a PDF viewer or LMS page. Line breaks for
                         each row/date improve accuracy. You can still refine and
                         delete events after extraction.

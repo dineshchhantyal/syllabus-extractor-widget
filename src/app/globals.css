@@ -51,11 +51,11 @@ html.dark {
 body {
     background: var(--background);
     color: var(--foreground);
-    font-family: Arial, Helvetica, sans-serif;
-    -webkit-font-smoothing: antialiased;
-}
-
-html.dark body {
+        --background: #ffffff;
+        --background-alt: #f7f7fa;
+        --background-muted: #e5e5ea;
+        --foreground: #18181b;
+        --foreground-muted: #23232a; /* much deeper for better contrast on light surfaces */
     background: var(--background);
 }
 
@@ -70,37 +70,34 @@ html.dark body {
         var(--_bg2) 55%,
         var(--_bg1)
     );
-    color: var(--on-primary);
+    color: #18181b;
     font-weight: 600;
     box-shadow: var(--shadow-sm);
 }
 .btn-primary:hover {
-    background: linear-gradient(
-        90deg,
-        var(--_bg1),
-        var(--_bg2) 60%,
-        var(--_bg3)
-    );
+    background: var(--_bg3);
 }
 .btn-primary:active {
     filter: brightness(0.95);
 }
-.btn-primary:focus-visible {
-    outline: 2px solid rgb(var(--ring-primary));
-    outline-offset: 2px;
-}
-
-.surface-card {
-    background: var(--background-alt);
-    border: 1px solid var(--background-muted);
-}
-html.dark .surface-card {
-    border-color: #1f1f1f;
-}
-
-.surface-muted {
-    background: var(--background-muted);
-}
+    input::placeholder,
+    textarea::placeholder {
+        color: var(--foreground-muted);
+        opacity: 0.85;
+    }
+    input:focus,
+    textarea:focus,
+    select:focus {
+        outline: 2px solid rgba(var(--primary-rgb) / 0.65);
+        outline-offset: 2px;
+        border-color: rgb(var(--primary-rgb));
+    }
+    html.dark input,
+    html.dark textarea,
+    html.dark select {
+        background: var(--background-muted);
+        border-color: #222;
+    }
 
 /* Utility helpers (non Tailwind) */
 /* Utility (prefer tokens, fall back to direct) */
@@ -140,6 +137,7 @@ html.dark .surface-card {
 }
 .text-fg-muted {
     color: var(--foreground-muted);
+    text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff;
 }
 
 /* Form focus states unify */
